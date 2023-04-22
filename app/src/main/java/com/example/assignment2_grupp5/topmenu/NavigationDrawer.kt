@@ -11,7 +11,9 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -50,8 +52,8 @@ fun DrawerBody(
                 .padding(16.dp)
             ) {
                 Icon(painter = item.icon,
-                    contentDescription = item.contentDescription)
-                Spacer(modifier = Modifier.width(16.dp))
+                    contentDescription = item.contentDescription, tint = Color.White)
+                Spacer(modifier = Modifier.width(16.dp) .align(Alignment.CenterVertically))
                 Text(text = item.title, style = itemTextStyle, modifier = Modifier.weight(1f))
             }
         }

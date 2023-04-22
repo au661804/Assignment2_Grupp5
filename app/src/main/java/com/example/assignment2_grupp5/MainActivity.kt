@@ -7,14 +7,19 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.*
 import androidx.compose.material.R
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.assignment2_grupp5.topmenu.menu.MenuItem
 import com.example.assignment2_grupp5.ui.theme.Assignment2_Grupp5Theme
 import com.example.assignment2_grupp5.R.drawable
@@ -34,7 +39,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     scaffoldState = scaffoldState,
                     topBar = {
-                        AppBar (title = "My Contact book",
+                        AppBar (title = "TOUR",
                             onNavigationIconClick = {
                                 scope.launch {
                                     Log.v(this::class.simpleName, "in launch launch Click")
@@ -47,49 +52,68 @@ class MainActivity : ComponentActivity() {
                         DrawerHeader()
                         DrawerBody(items = listOf(
                             MenuItem(
-                                id = "home",
-                                title = "Home",
-                                contentDescription = "Go to homescreen",
-                                icon = painterResource(id = drawable.contacts)
+                                id = "begivenheder",
+                                title = "Begivenheder",
+                                contentDescription = "Go to Begidenheder",
+                                icon = painterResource(id = android.R.drawable.ic_input_add)
 
                             ),
                             MenuItem(
-                                id = "info",
-                                title = "Info",
-                                contentDescription = "Go to info",
+                                id = "TDF",
+                                title = "Tour de Fredagsbar",
+                                contentDescription = "Go to tdf",
                                 icon = painterResource(id = android.R.drawable.ic_dialog_info)
 
                             ),
                             MenuItem(
-                                id = "contacts",
-                                title = "Contacts",
-                                contentDescription = "Go to contacts",
-                                icon = painterResource(id = drawable.contacts
+                                id = "DineRuter",
+                                title = "Dine Ruter",
+                                contentDescription = "Go to DineRuter",
+                                icon = painterResource(id = android.R.drawable.ic_input_add
+                                )
+                            ),
+                            MenuItem(
+                                id = "FindVej",
+                                title = "Find Vej",
+                                contentDescription = "Go to FindVej",
+                                icon = painterResource(id = android.R.drawable.ic_input_delete
+                                )
+                            ),
+                            MenuItem(
+                                id = "OpretBegivenhed",
+                                title = "Opret Begivenhed",
+                                contentDescription = "Go to OpretBegivenhed",
+                                icon = painterResource(id = android.R.drawable.ic_input_add
                                 )
                             )
                         ),
                             onItemClick = {
                                 when(it.id){
-                                    "home" ->{ Log.v(this::class.simpleName, "Home clicked")
-                                    }
-                                    "editor" ->{ Log.v(this::class.simpleName, "Home clicked")
-                                    }
-                                    "contacts" -> {
+                                    "begivenheder" ->{
                                         scope.launch {
-                                            val intent = Intent(this@MainActivity, BegivenhederActivity::class.java)
-                                            startActivity(intent)
-                                            scaffoldState.drawerState.open() }
+                                        val intent = Intent(this@MainActivity, BegivenhederActivity::class.java)
+                                        startActivity(intent)
+                                        scaffoldState.drawerState.open() }
                                     }
-                                }   }
+                                    "TDF" ->{ Log.v(this::class.simpleName, "TDF clicked")
+                                    }
+                                    "DineRuter" ->{ Log.v(this::class.simpleName, "Dine Ruter clicked")
+                                    }
+                                    "FindVej" ->{ Log.v(this::class.simpleName, "Find Vej clicked")
+                                    }
+                                    "OpretBegivenhed" -> { Log.v(this::class.simpleName, "Home clicked")
+                                    }
+                               }
+                            },
                         )
 
                         //Text(text = "Scaffold Content")
 
                     }
                     )   {
-                    Image(painter = painterResource(id = drawable.contacts),
+                    Image(painter = painterResource(id = drawable.tdf_orig),
                         contentDescription = "Start-up Icon",
-                        Modifier.fillMaxSize())
+                        Modifier.size(200.dp), Alignment.Center)
 
 
                 }
