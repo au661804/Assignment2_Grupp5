@@ -4,12 +4,12 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.R
 import androidx.compose.runtime.Composable
@@ -17,8 +17,16 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import com.example.assignment2_grupp5.topmenu.menu.MenuItem
 import com.example.assignment2_grupp5.ui.theme.Assignment2_Grupp5Theme
@@ -54,7 +62,7 @@ class MainActivity : ComponentActivity() {
                             MenuItem(
                                 id = "begivenheder",
                                 title = "Begivenheder",
-                                contentDescription = "Go to Begidenheder",
+                                contentDescription = "Go to Begivenheder",
                                 icon = painterResource(id = android.R.drawable.ic_input_add)
 
                             ),
@@ -107,13 +115,20 @@ class MainActivity : ComponentActivity() {
                             },
                         )
 
-                        //Text(text = "Scaffold Content")
+
 
                     }
                     )   {
                     Image(painter = painterResource(id = drawable.tdf_orig),
                         contentDescription = "Start-up Icon",
                         Modifier.size(200.dp), Alignment.Center)
+
+                    TextAlign
+                    Text("Hvad kan du finde?", modifier = Modifier.background(Color.White),)
+                    Text("- Planlæg din egen tour de fredagsbar")
+                    Text("- Se fredagsbarer og deres åbningstider")
+                    Text("- Se begivenheder fra fredagsbarer eller andres tour de fredagsbar")
+
 
 
                 }
@@ -128,10 +143,3 @@ fun Greeting(name: String) {
     Text(text = "Hello $name!")
 }
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    Assignment2_Grupp5Theme {
-        Greeting("Android")
-    }
-}
