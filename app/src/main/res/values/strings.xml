@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Assignment2_Grupp5</string>
+    <string name="title_activity_find_vej">FindVejActivity</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

@@ -29,7 +29,7 @@ open class LoggedActivity : ComponentActivity() {
 
     override fun onPause() {
         super.onPause()
-        Log.v(this::class.simpleName, "PAUSEING")
+        Log.v(this::class.simpleName, "PAUSING")
     }
 
     override fun onStop() {

@@ -33,11 +33,13 @@ import com.example.assignment2_grupp5.ui.theme.Assignment2_Grupp5Theme
 import com.example.assignment2_grupp5.R.drawable
 import com.example.assignment2_grupp5.AppBar
 import kotlinx.coroutines.launch
+import com.example.assignment2_grupp5.LoggedActivity
 
-class MainActivity : ComponentActivity() {
+class MainActivity : LoggedActivity() {
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             Assignment2_Grupp5Theme {
 
@@ -98,16 +100,24 @@ class MainActivity : ComponentActivity() {
                             onItemClick = {
                                 when(it.id){
                                     "begivenheder" ->{
+                                        Log.v(this::class.simpleName, "Begivenheder clicked")
+
                                         scope.launch {
                                         val intent = Intent(this@MainActivity, BegivenhederActivity::class.java)
                                         startActivity(intent)
-                                        scaffoldState.drawerState.open() }
+                                        scaffoldState.drawerState.open()
+                                        }
                                     }
                                     "TDF" ->{ Log.v(this::class.simpleName, "TDF clicked")
                                     }
                                     "DineRuter" ->{ Log.v(this::class.simpleName, "Dine Ruter clicked")
                                     }
-                                    "FindVej" ->{ Log.v(this::class.simpleName, "Find Vej clicked")
+                                    "FindVej" ->{ Log.v(this::class.simpleName, "FindVej clicked")
+                                        scope.launch {
+                                        val intent = Intent(this@MainActivity, FindVejActivity::class.java)
+                                        startActivity(intent)
+                                        scaffoldState.drawerState.open()
+                                        }
                                     }
                                     "OpretBegivenhed" -> { Log.v(this::class.simpleName, "Home clicked")
                                     }
