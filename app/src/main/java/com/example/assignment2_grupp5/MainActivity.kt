@@ -120,6 +120,10 @@ class MainActivity : LoggedActivity() {
                                         }
                                     }
                                     "OpretBegivenhed" -> { Log.v(this::class.simpleName, "Home clicked")
+                                        scope.launch {
+                                            val intent = Intent(this@MainActivity, OpretBegivenhedActivity::class.java)
+                                            startActivity(intent)
+                                            scaffoldState.drawerState.open()}
                                     }
                                }
                             },
