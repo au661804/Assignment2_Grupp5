@@ -17,8 +17,8 @@ fun AppBar(title: String, onNavigationIconClick: () -> Unit){
         title = {
             Text(title)
         },
-        backgroundColor = MaterialTheme.colors.primary,
-        contentColor = MaterialTheme.colors.onPrimary,
+        backgroundColor = MaterialTheme.colors.onPrimary,
+        contentColor = MaterialTheme.colors.onSecondary,
         navigationIcon = {
             IconButton(onClick = onNavigationIconClick) {
                 Icon(imageVector = Icons.Default.Home,

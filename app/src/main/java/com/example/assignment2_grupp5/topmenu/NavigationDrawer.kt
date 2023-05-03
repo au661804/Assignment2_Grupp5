@@ -31,7 +31,7 @@ fun DrawerHeader(){
 
     ) 
     {
-        Text(text = "Welcome!", color = MaterialTheme.colors.onBackground, style = MaterialTheme.typography.h4)
+        Text(text = "Fredagsbar!", color = MaterialTheme.colors.onBackground, style = MaterialTheme.typography.h4)
     }
 }
 
@@ -51,9 +51,11 @@ fun DrawerBody(
                 }
                 .padding(16.dp)
             ) {
-                Icon(painter = item.icon,
-                    contentDescription = item.contentDescription, tint = Color.White)
-                Spacer(modifier = Modifier.width(16.dp) .align(Alignment.CenterVertically))
+                Icon(modifier = Modifier.width(30.dp) ,painter = item.icon,
+                    contentDescription = item.contentDescription, tint = Color.Red)
+                Spacer(modifier = Modifier
+                    .width(16.dp)
+                    .align(Alignment.CenterVertically))
                 Text(text = item.title, style = itemTextStyle, modifier = Modifier.weight(1f))
             }
         }
@@ -62,3 +64,9 @@ fun DrawerBody(
 
 }
 
+@Preview
+@Composable
+fun previewDrawer()
+{
+    DrawerHeader()
+}

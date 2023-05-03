@@ -42,7 +42,7 @@ class BegivenhederActivity: LoggedActivity()  {
                        Icon(painter = painterResource(id = R.drawable.contacts), contentDescription ="Go back", tint = Color.Blue)
 
                     }
-                    repository.getContactList()
+                    repository.getBegivenhederList()
                         .map {
                             BegivenhederItem(name = it.name, imageId = it.imageId) {
                                 val intent =

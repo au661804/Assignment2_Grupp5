@@ -1,41 +1,40 @@
 package backend
 
 import android.graphics.Color
+import android.media.Image
 import android.util.Log
+import androidx.compose.ui.graphics.painter.Painter
 import com.example.assignment2_grupp5.R
 import com.example.assignment2_grupp5.ui.theme.Purple200
+import java.util.Date
 
 
-enum class Persons {
-    Pooh,
-    Piglet,
-    Rabbit,
-    Tigger,
-    Eeyore
+enum class Bar {
+    SidsteFredagsBar,
+    KapsejladsFredagsbar
 
 }
 
-data class Contacts(val name: String, val imageId: Int, val information: ContactInformation, val persons: Persons)
-data class ContactItem(val name: String, val imageId: Int)
-data class ContactInformation(val name: String, val age: Int, val favColor: String, val imageId: Int)
+data class Begivenheder(val name: String, val date: Int, val imageId: Int, val information: String, var lokation: String,val bar: Bar)
+data class BegivenhedItem(val name: String, val imageId: Int)
 data class Color(val black: Int, val red: Int, val orange: Int)
 
 
 class Repository {
-    private val contacts = listOf(
-        Contacts(
-            "Pooh",R.drawable.contacts,
-            ContactInformation("Pooh", 10, "Red" ,R.drawable.contacts),Persons.Pooh
+    private val begivenheder = listOf(
+        Begivenheder(
+            "Pooh",23,R.drawable.tdf_orig,
+            "Året sidste bar!","Katrines Kælder",Bar.SidsteFredagsBar
         )
     )
 
-    fun getContactList(): List<ContactItem> {
+    fun getBegivenhederList(): List<BegivenhedItem> {
         Log.v(this::class.simpleName, "Get ContactList")
-        return contacts.map { ContactItem(it.name, it.imageId) }
+        return begivenheder.map { BegivenhedItem(it.name, it.imageId) }
     }
 
-    fun getContact(name: String?): Contacts? {
+    fun getContact(name: String?): Begivenheder? {
         Log.v(this::class.simpleName, "Get Contact $name")
-        return contacts.find { it.name == name }
+        return begivenheder.find { it.name == name }
     }
 }
