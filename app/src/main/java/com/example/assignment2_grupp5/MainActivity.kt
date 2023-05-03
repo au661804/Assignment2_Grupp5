@@ -44,6 +44,7 @@ class MainActivity : ComponentActivity() {
                 val scaffoldState = rememberScaffoldState()
                 val scope = rememberCoroutineScope()
 
+
                 Scaffold(
                     scaffoldState = scaffoldState,
                     topBar = {

@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Assignment2_Grupp5" parent="android:Theme.Material.Light.NoActionBar">
+    <style name="Theme.Assignment2_Grupp5" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:statusBarColor">@color/purple_700</item>
     </style>
+
+    <style name="Theme.Assignment2_Grupp5.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.Assignment2_Grupp5.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Assignment2_Grupp5.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

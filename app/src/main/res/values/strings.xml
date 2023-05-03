@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Assignment2_Grupp5</string>
+    <string name="login_button">Log in</string>
+    <string name="tour_picture">Tourpicture</string>
+    <string name="signup_button">Sign up</string>
+    <string name="login_text">Log in</string>
+    <string name="OR_Text">OR</string>
+    <string name="emailtext">E-mail</string>
+    <string name="passwordtext">Password</string>
+    <string name="editpassword">Password</string>
+    <string name="editemail">Email</string>
+    <string name="title_activity_start_screen">startScreen</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>
