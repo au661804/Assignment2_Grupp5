@@ -17,7 +17,7 @@ import com.example.assignment2_grupp5.R
 import com.example.assignment2_grupp5.SignUp
 
 @Composable
-fun SignUp() {
+fun SignUp(SignedUp: () -> Unit, SignUp: (userName: String, password: String) -> Boolean) {
     Column(
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -29,6 +29,16 @@ fun SignUp() {
                 .padding(top = 20.dp)
                 .clip(RoundedCornerShape(8.dp))
         )
+
+        Button(
+            onClick = {
+                val res = SignUp("ui", "jk")
+                //do login shit
+                //if ok
+                if (res)
+                    SignedUp()
+
+            },
             modifier = Modifier
                 .padding(top = 32.dp)
                 .fillMaxWidth(0.8f)
@@ -36,15 +46,6 @@ fun SignUp() {
             Text(text = "Login")
         }
 
-        Button(
-            onClick = {
 
-            },
-            modifier = Modifier
-                .padding(top = 16.dp)
-                .fillMaxWidth(0.8f)
-        ) {
-            Text(text = "Sign Up")
-        }
     }
 }

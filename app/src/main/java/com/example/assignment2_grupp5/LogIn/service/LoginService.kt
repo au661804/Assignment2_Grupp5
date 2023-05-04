@@ -6,5 +6,9 @@ class LoginService {
         return true;
 
     }
+    fun signUp(userName: String,password: String):Boolean{
+        return true;
+
+    }
 
 }
