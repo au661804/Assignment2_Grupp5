@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun BegivenhederItem(name: String, imageId: Int, goToContact: () -> Unit) {
-    Box() {
+    Box {
         Row(
             Modifier
                 .padding(all = 5.dp)

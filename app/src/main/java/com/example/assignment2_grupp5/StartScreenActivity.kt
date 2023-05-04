@@ -28,9 +28,9 @@ import kotlinx.coroutines.launch
 class StartScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d("start","start of startscreen activity")
         setContent {
-            Column(
-                modifier = Modifier.fillMaxWidth(),
+            Column(modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Image(
@@ -42,7 +42,7 @@ class StartScreenActivity : AppCompatActivity() {
                 )
 
                 Button(onClick = {
-                        val intent = Intent(this@StartScreenActivity, LoginActivity::class.java)
+                        val intent = Intent(this@StartScreenActivity, SignupActivity::class.java)
                         startActivity(intent)
                     },
                     modifier = Modifier
