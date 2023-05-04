@@ -15,26 +15,26 @@ enum class Bar {
 
 }
 
-data class Begivenheder(val name: String, val date: Int, val imageId: Int, val information: String, var lokation: String,val bar: Bar)
+data class Begivenheder(val id: String, val name: String, val date: Int, val imageId: Int, val information: String, var lokation: String,val bar: Bar)
 data class BegivenhedItem(val name: String, val imageId: Int)
 data class Color(val black: Int, val red: Int, val orange: Int)
 
 
 class Repository {
-    private val begivenheder = listOf(
-        Begivenheder(
-            "Pooh",23,R.drawable.tdf_orig,
-            "Året sidste bar!","Katrines Kælder",Bar.SidsteFredagsBar
-        )
-    )
+//    private val begivenheder = listOf(
+//        Begivenheder(
+//            "Pooh",23,R.drawable.tdf_orig,
+//            "Året sidste bar!","Katrines Kælder",Bar.SidsteFredagsBar
+//        )
+//    )
 
-    fun getBegivenhederList(): List<BegivenhedItem> {
-        Log.v(this::class.simpleName, "Get ContactList")
-        return begivenheder.map { BegivenhedItem(it.name, it.imageId) }
-    }
-
-    fun getContact(name: String?): Begivenheder? {
-        Log.v(this::class.simpleName, "Get Contact $name")
-        return begivenheder.find { it.name == name }
-    }
+//    fun getBegivenhederList(): List<BegivenhedItem> {
+//        Log.v(this::class.simpleName, "Get ContactList")
+//        return begivenheder.map { BegivenhedItem(it.name, it.imageId) }
+//    }
+//
+//    fun getContact(name: String?): Begivenheder? {
+//        Log.v(this::class.simpleName, "Get Contact $name")
+//        return begivenheder.find { it.name == name }
+//    }
 }
