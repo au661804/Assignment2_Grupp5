@@ -1,9 +1,7 @@
 package com.example.assignment2_grupp5.LogIn.Components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.OutlinedTextField
@@ -11,20 +9,22 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.assignment2_grupp5.R
+import androidx.navigation.NavController
+import com.example.assignment2_grupp5.LogIn.service.LoginService
+import kotlinx.coroutines.launch
+
 
 @Composable
-fun LogIn(loggedIn: () -> Unit, logIn: (userName: String, password: String) -> Boolean) {
+fun LogIn(service:LoginService,nav: NavController) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -39,12 +39,13 @@ fun LogIn(loggedIn: () -> Unit, logIn: (userName: String, password: String) -> B
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(bottom = 16.dp)
         )
-        val emailState = remember { mutableStateOf(TextFieldValue()) }
-        val passwordState = remember { mutableStateOf(TextFieldValue()) }
+        val email = remember { mutableStateOf(TextFieldValue()) }
+        val password = remember { mutableStateOf(TextFieldValue()) }
+        val scope = rememberCoroutineScope()
 
         OutlinedTextField(
-            value = emailState.value,
-            onValueChange = { emailState.value = it },
+            value = email.value,
+            onValueChange = { email.value = it },
             label = { Text("Email") },
             singleLine = true,
             modifier = Modifier
@@ -52,8 +53,8 @@ fun LogIn(loggedIn: () -> Unit, logIn: (userName: String, password: String) -> B
                 .padding(bottom = 20.dp)
         )
         OutlinedTextField(
-            value = passwordState.value,
-            onValueChange = { passwordState.value = it },
+            value = password.value,
+            onValueChange = { password.value = it },
             label = { Text("Password") },
             visualTransformation = PasswordVisualTransformation(),
             singleLine = true,
@@ -64,11 +65,12 @@ fun LogIn(loggedIn: () -> Unit, logIn: (userName: String, password: String) -> B
 
         Button(
             onClick = {
-                val res = logIn("ui", "jk")
-                //do login shit
-                //if ok
-                if (res)
-                    loggedIn()
+                scope.launch {
+                    service.login(email.value.text,password.value.text)
+                    //try catch håndere hvis det fejler.
+                    nav.navigate("Signup")
+
+                }
             },
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color(android.graphics.Color.parseColor("#ffa34f"))

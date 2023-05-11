@@ -7,6 +7,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -15,10 +16,13 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import com.example.assignment2_grupp5.LogIn.service.LoginService
+import kotlinx.coroutines.launch
 
-//navigateLogIn: () -> Unit
 @Composable
-fun SignUp(SignedUp: () -> Unit, SignUp: (userName: String, password: String) -> Boolean) {
+fun SignUp(service:LoginService,nav: NavController )
+{
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -27,39 +31,43 @@ fun SignUp(SignedUp: () -> Unit, SignUp: (userName: String, password: String) ->
         verticalArrangement = Arrangement.Top
 
     ) {
+        val email = remember { mutableStateOf(TextFieldValue("")) }
+        val password = remember { mutableStateOf(TextFieldValue("")) }
+        val scope = rememberCoroutineScope()
+
         Text(
             text = "Sign Up",
             fontSize = 30.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(bottom = 16.dp)
         )
-        val emailState = remember { mutableStateOf(TextFieldValue()) }
-        val passwordState = remember { mutableStateOf(TextFieldValue()) }
 
-        OutlinedTextField(value = emailState.value,
-            onValueChange = { emailState.value = it },
-            label = { Text("Email") },
+        OutlinedTextField(value = email.value,
+            onValueChange = { email.value = it },
+            label = { Text(text="Email: ")  },
             singleLine = true,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 20.dp)
         )
-        OutlinedTextField(value = passwordState.value,
-            onValueChange = { passwordState.value = it },
-            label = { Text("Password") },
+        OutlinedTextField(value = password.value,
+            onValueChange = { password.value = it },
+            label = { Text(text="Password") },
             visualTransformation = PasswordVisualTransformation(),
             singleLine = true,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(bottom = 16.dp)
         )
-
         Button(
             onClick = {
-                val res = SignUp("ui", "jk")
-                //do login shit
-                //if ok
-                if (res) SignedUp()
+                scope.launch {
+                        val user= service.signup(email.value.text,password.value.text)
+                        //try catch håndere hvis det fejler.
+                        nav.navigate("LogIn")
+
+
+                }
 
             }, colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color(android.graphics.Color.parseColor("#ffa34f"))
@@ -84,8 +92,7 @@ fun SignUp(SignedUp: () -> Unit, SignUp: (userName: String, password: String) ->
 
         }
         Button(onClick = {
-            //navigateLogIn()
-
+        nav.navigate("LogIn")
         },
             colors = ButtonDefaults.buttonColors(
             backgroundColor = Color(android.graphics.Color.parseColor("#FFFFFF")
@@ -101,10 +108,10 @@ fun SignUp(SignedUp: () -> Unit, SignUp: (userName: String, password: String) ->
 
             ) {
                 Text(
-                    text = "Already a user? Login",
+                    text = "Already a user? try Login",
                     color = Color.Gray,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 15.sp,
+                    fontSize = 12.sp,
                     modifier = Modifier.align(Alignment.Center)
                 )
             }
